@@ -1,88 +1,158 @@
-**Vehicle CRUD**
-GET http://localhost:3000/api/v1/vehicles
-Inputs:
-Outputs:
-{
-    "vehicle_id",
-    "vehicle_no",
-    "typeid",
-    "created_at",
-    "created_by",
-    "uuid"
-}
+# Vehicle API Documentation
 
-GET http://localhost:3000/api/v1/vehicles/{id}
-Inputs: id in param
-Outputs:
-{
-    "vehicle_id",
-    "vehicle_no",
-    "typeid",
-    "created_at",
-    "created_by",
-    "uuid"
-}
+This document outlines the available endpoints for vehicle management operations.
 
-POST http://localhost:3000/api/v1/vehicles
-Inputs:
-{
-	"vehicleno", 
-    "typeid", 
-    "userid"
-}
-Outputs:
-{
-    "code",
-    "data": [
-        {
-            "id",
-            "vehicleno",
-            "typeid",
-            "createdat",
-            "createdby",
-            "uuidval"
-        }
-    ],
-    "message": "Vehicle created successfully"
-}
+## Base URL
+```
+http://localhost:3000/api/v1
+```
 
-PUT http://localhost:3000/api/v1/vehicles/{id}
-Inputs:
-{
-	"vehicleno", 
-    "typeid", 
-    "userid"
-}
-Outputs:
-{
-    "code",
-    "data": [
-        {
-            "id",
-            "vehicleno",
-            "typeid",
-            "createdat",
-            "createdby",
-            "uuidval"
-        }
-    ],
-    "message": "Vehicle updated successfully"
-}
+## Endpoints
 
-DELETE http://localhost:3000/api/v1/vehicles/{id}
-Inputs:
-Outputs:
+### 1. Get All Vehicles
+
+**Request:**
+```http
+GET /vehicles
+```
+
+**Response:**
+```json
+[
+  {
+    "vehicle_id": "integer",
+    "vehicle_no": "string",
+    "typeid": "integer",
+    "created_at": "timestamp",
+    "created_by": "integer",
+    "uuid": "string"
+  }
+]
+```
+
+### 2. Get Vehicle by ID
+
+**Request:**
+```http
+GET /vehicles/{id}
+```
+
+**Parameters:**
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| id        | integer | Vehicle ID |
+
+**Response:**
+```json
 {
-    "code",
-    "data": [
-        {
-            "id",
-            "vehicleno",
-            "typeid",
-            "createdat",
-            "createdby",
-            "uuidval"
-        }
-    ],
-    "message": "Vehicle deleted successfully"
+  "vehicle_id": "integer",
+  "vehicle_no": "string",
+  "typeid": "integer",
+  "created_at": "timestamp",
+  "created_by": "integer",
+  "uuid": "string"
 }
+```
+
+### 3. Create Vehicle
+
+**Request:**
+```http
+POST /vehicles
+```
+
+**Request Body:**
+```json
+{
+  "vehicleno": "string",
+  "typeid": "integer",
+  "userid": "integer"
+}
+```
+
+**Response:**
+```json
+{
+  "code": "integer",
+  "data": [
+    {
+      "id": "integer",
+      "vehicleno": "string",
+      "typeid": "integer",
+      "createdat": "timestamp",
+      "createdby": "integer",
+      "uuidval": "string"
+    }
+  ],
+  "message": "Vehicle created successfully"
+}
+```
+
+### 4. Update Vehicle
+
+**Request:**
+```http
+PUT /vehicles/{id}
+```
+
+**Parameters:**
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| id        | integer | Vehicle ID |
+
+**Request Body:**
+```json
+{
+  "vehicleno": "string",
+  "typeid": "integer",
+  "userid": "integer"
+}
+```
+
+**Response:**
+```json
+{
+  "code": "integer",
+  "data": [
+    {
+      "id": "integer",
+      "vehicleno": "string",
+      "typeid": "integer",
+      "createdat": "timestamp",
+      "createdby": "integer",
+      "uuidval": "string"
+    }
+  ],
+  "message": "Vehicle updated successfully"
+}
+```
+
+### 5. Delete Vehicle
+
+**Request:**
+```http
+DELETE /vehicles/{id}
+```
+
+**Parameters:**
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| id        | integer | Vehicle ID |
+
+**Response:**
+```json
+{
+  "code": "integer",
+  "data": [
+    {
+      "id": "integer",
+      "vehicleno": "string",
+      "typeid": "integer",
+      "createdat": "timestamp",
+      "createdby": "integer",
+      "uuidval": "string"
+    }
+  ],
+  "message": "Vehicle deleted successfully"
+}
+```
